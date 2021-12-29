@@ -1,0 +1,68 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/PolygonParty-3KXM.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/scripts/present_counter.gd" type="Script" id=2]
+[ext_resource path="res://src/scenes/models/Present.tscn" type="PackedScene" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 36
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="World" id=3]
+environment = ExtResource( 4 )
+
+[node name="PresentCounter" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 183.0
+margin_top = 8.0
+margin_right = 329.0
+margin_bottom = 47.0
+theme = SubResource( 2 )
+text = "0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_left = 336.0
+margin_right = 384.0
+margin_bottom = 48.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 48, 48 )
+own_world = true
+world = SubResource( 3 )
+transparent_bg = true
+handle_input_locally = false
+usage = 3
+render_target_update_mode = 3
+
+[node name="Spatial" type="Spatial" parent="ViewportContainer/Viewport"]
+
+[node name="Camera" type="Camera" parent="ViewportContainer/Viewport/Spatial"]
+transform = Transform( 0.00323127, -0.611568, 0.791185, 0.00249768, 0.791192, 0.611563, -0.999992, -5.82867e-15, 0.00408406, 2.44853, 3.13787, 0 )
+far = 20.0
+
+[node name="Present" parent="ViewportContainer/Viewport/Spatial" instance=ExtResource( 3 )]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

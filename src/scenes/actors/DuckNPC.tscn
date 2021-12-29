@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/scenes/models/Duck.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/actors/TextArea.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/scripts/duck_npc.gd" type="Script" id=3]
+[ext_resource path="res://src/scenes/actors/ShadowStatic.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 1.49756
+height = 0.698473
+
+[node name="DuckNPC" type="StaticBody"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 3 )
+
+[node name="TextArea" parent="." instance=ExtResource( 2 )]
+transform = Transform( 2.5, 0, 0, 0, 2, 0, 0, 0, 3.25, 0, 2.00491, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.76207, 0.0624052 )
+shape = SubResource( 1 )
+
+[node name="Duck" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0 )
+
+[node name="ShadowStatic" parent="." instance=ExtResource( 4 )]
+transform = Transform( 4, 0, 0, 0, -1.74846e-07, 1, 0, -4, -4.37114e-08, 0, 0.111979, 0 )

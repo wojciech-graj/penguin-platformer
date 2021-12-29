@@ -1,0 +1,525 @@
+[gd_scene load_steps=27 format=2]
+
+[ext_resource path="res://src/scenes/actors/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/scenes/actors/Checkpoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/materials/tree_green.tres" type="Material" id=3]
+[ext_resource path="res://src/scenes/actors/BunnyNPC.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/scenes/actors/PresentCounter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scenes/models/Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/actors/PresentPickup.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/actors/Textbox.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/scenes/models/PlatformSq.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/scenes/actors/TreeObstacle.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/materials/present_1.tres" type="Material" id=12]
+[ext_resource path="res://src/scenes/actors/LogObstacle.tscn" type="PackedScene" id=13]
+[ext_resource path="res://src/scenes/actors/MushroomObstacle.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/scenes/actors/SignNPC.tscn" type="PackedScene" id=15]
+[ext_resource path="res://src/materials/tree_blue.tres" type="Material" id=16]
+[ext_resource path="res://src/scenes/actors/Pause.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/textures/skybox.png" type="Texture" id=18]
+[ext_resource path="res://src/scenes/actors/TornadoObstacle.tscn" type="PackedScene" id=19]
+[ext_resource path="res://src/scenes/actors/BoostPad.tscn" type="PackedScene" id=20]
+[ext_resource path="res://src/materials/tree_lights.tres" type="Material" id=21]
+[ext_resource path="res://src/scenes/actors/DuckNPC.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/scripts/final_npc.gd" type="Script" id=23]
+[ext_resource path="res://src/materials/present_2.tres" type="Material" id=24]
+[ext_resource path="res://src/materials/present_3.tres" type="Material" id=25]
+
+[sub_resource type="PanoramaSky" id=2]
+panorama = ExtResource( 18 )
+
+[sub_resource type="Environment" id=1]
+background_mode = 2
+background_sky = SubResource( 2 )
+
+[node name="Level" type="Spatial"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4048, 17.2507, -1.65579 )
+
+[node name="Presents" type="Spatial" parent="."]
+
+[node name="PresentPickup3" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -41.8053, 19.8069, -1.33437 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup4" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -48.4298, 25.2526, -10.9634 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup5" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -48.4298, 22.2815, -19.6525 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup6" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -48.4298, 23.4539, -22.3665 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup7" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -48.4298, 24.8969, -24.9692 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup8" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -47.4641, 23.0318, -43.9608 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup9" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 28.6599, 33.7247, -48.0409 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup10" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -29.73, 23.6546, -47.4367 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup11" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -29.73, 23.6546, -52.5248 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup12" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -29.73, 26.7936, -49.766 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup13" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -6.9459, 27.4448, -49.766 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup14" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 2.70187, 29.0535, -53.6134 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup15" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 39.6154, 34.2794, -48.2149 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup16" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 61.1732, 31.7134, -48.724 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup17" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 61.8273, 35.1143, -35.9142 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup18" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 60.2594, 51.9477, -16.7213 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup19" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 60.2018, 38.6904, -16.0659 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup20" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 60.7015, 43.0059, 16.0005 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup21" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 55.842, 45.212, 32.6099 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup22" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 46.4815, 45.212, 46.928 )
+shader_material = ExtResource( 24 )
+
+[node name="PresentPickup23" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 35.0731, 45.212, 56.8965 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup25" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -30.9915, 45.2581, 56.8965 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup26" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -53.4876, 38.1963, 55.7402 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup27" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -57.1941, 53.1431, 35.2109 )
+shader_material = ExtResource( 12 )
+
+[node name="PresentPickup28" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -30.6818, 68.5632, 13.5111 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup29" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 66.1073, 92.7299, 32.0278 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup30" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -20.6262, 110.547, 7.03492 )
+shader_material = ExtResource( 25 )
+
+[node name="PresentPickup31" parent="Presents" instance=ExtResource( 7 )]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 29.8772, 106.701, -37.3451 )
+shader_material = ExtResource( 25 )
+
+[node name="NPCs" type="Spatial" parent="."]
+
+[node name="SignNPC" parent="NPCs" instance=ExtResource( 15 )]
+transform = Transform( -0.0360507, 0, 0.99935, 0, 1, 0, -0.99935, 0, -0.0360507, 1.74927, 16.4746, -1.37214 )
+text = [ "Welcome to Snowy Mountain Land! Population: 2", "To walk around, use your joystick, arrow keys, or WASD. To jump, press the A button or spacebar.", "You can also double-jump to get to even higher locations.", "Enjoy your stay!" ]
+
+[node name="SignNPC2" parent="NPCs" instance=ExtResource( 15 )]
+transform = Transform( 0.88061, 0, -0.473842, 0, 1, 0, 0.473842, 0, 0.88061, -12.8001, 67.7281, -10.4106 )
+text = [ "Beware !!! The peak of Snowy Mountain lies beyond." ]
+
+[node name="SignNPC3" parent="NPCs" instance=ExtResource( 15 )]
+transform = Transform( -0.624562, 0, 0.780976, 0, 1, 0, -0.780976, 0, -0.624562, 38.5577, 140.51, -5.11272 )
+text = [ "Snowy Mountain Peak. Altitude: 70 Penguins", "You have conquered this game's hardest challenge. Bravo, and Merry Christmas!" ]
+
+[node name="BunnyNPC" parent="NPCs" instance=ExtResource( 4 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -32.4293, 16.4746, -7.07118 )
+text = [ "Hey there, I'm Brian the Bunny, one of the two proud residents of Snowy Mountain Land! ", "Our Christmas gift warehouse was destroyed by a blizzard, and the gifts have been scattered everywhere", "I'd collect them myself but the developer didn't give me a walking animation, so it's all up to you now", "Please help us save Christmas by collecting all 25 gifts.", "Then again, don't feel pressured to get every single one. I'm sure that any amount will be a huge help!", "And most importantly, have fun!" ]
+
+[node name="DuckNPC" parent="NPCs" instance=ExtResource( 22 )]
+transform = Transform( 0.658492, 0, -0.752587, 0, 1, 0, 0.752587, 0, 0.658492, -18.9152, 67.8876, 1.86027 )
+script = ExtResource( 23 )
+
+[node name="HUD" type="Control" parent="."]
+margin_right = 384.0
+margin_bottom = 288.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Textbox" parent="HUD" instance=ExtResource( 8 )]
+
+[node name="PresentCounter" parent="HUD" instance=ExtResource( 5 )]
+
+[node name="Pause" parent="HUD" instance=ExtResource( 17 )]
+
+[node name="World" type="Spatial" parent="."]
+
+[node name="platform" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -2.35171, 16.4746, -0.58947 )
+
+[node name="platform11" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 20, 0, 0, 0, 20, 0, 0, 0, 20, -18.3251, 67.7809, 4.22649 )
+
+[node name="platform15" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, 38.9895, 140.608, -5.00682 )
+
+[node name="platform2" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 8, 0, 0, 0, 8, 0, 0, 0, 8, -32.1064, 16.4746, -0.58947 )
+
+[node name="platform3" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -47.8031, 19.7888, -0.58947 )
+
+[node name="platform4" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -47.8031, 22.5349, -49.2736 )
+
+[node name="platform5" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -14.3558, 24.1142, -49.2736 )
+
+[node name="platform6" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 7, 0, 0, 0, 7, 0, 0, 0, 7, 16.4549, 27.872, -49.3653 )
+
+[node name="platform7" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 60.5324, 33.5668, -28.2376 )
+
+[node name="platform8" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 60.5324, 39.5379, 9.70401 )
+
+[node name="platform12" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 1.40134, 69.9108, -11.672 )
+
+[node name="platform14" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -17.6922, 108.049, -37.5001 )
+
+[node name="platform13" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, -20.2731, 107.717, 41.423 )
+
+[node name="platform9" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 19.3587, 49.7595, 57.3483 )
+
+[node name="platform10" parent="World" instance=ExtResource( 6 )]
+transform = Transform( 10, 0, 0, 0, 10, 0, 0, 0, 10, -82.6834, 42.0203, 54.7167 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="World"]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.93902, 159.411, 7.0355 )
+light_specular = 0.0
+light_bake_mode = 2
+
+[node name="Checkpoint" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.981296, 0, -0.192505, 0, 1, 0, 0.192505, 0, 0.981296, 12.3334, 16.4746, -1.53962 )
+
+[node name="Checkpoint2" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.981296, 0, -0.192505, 0, 1, 0, 0.192505, 0, 0.981296, -47.4326, 19.8183, -0.809205 )
+
+[node name="Checkpoint3" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.981296, 0, -0.192505, 0, 1, 0, 0.192505, 0, 0.981296, -47.4326, 22.6382, -49.6094 )
+
+[node name="Checkpoint4" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.981296, 0, -0.192505, 0, 1, 0, 0.192505, 0, 0.981296, -14.2142, 24.1244, -49.6094 )
+
+[node name="Checkpoint5" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.981296, 0, -0.192505, 0, 1, 0, 0.192505, 0, 0.981296, 13.3789, 27.8992, -47.6217 )
+
+[node name="Checkpoint6" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.981296, 0, -0.192505, 0, 1, 0, 0.192505, 0, 0.981296, 63.3336, 33.8505, -28.1183 )
+
+[node name="Checkpoint7" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.687658, 0, 0.726035, 0, 1, 0, -0.726035, 0, 0.687658, 60.7038, 39.5884, 9.54246 )
+
+[node name="Checkpoint10" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.687658, 0, 0.726035, 0, 1, 0, -0.726035, 0, 0.687658, 0.870679, 69.8621, -12.1892 )
+
+[node name="Checkpoint12" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.687658, 0, 0.726035, 0, 1, 0, -0.726035, 0, 0.687658, -17.8355, 108.079, -39.6214 )
+
+[node name="Checkpoint11" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.687658, 0, 0.726035, 0, 1, 0, -0.726035, 0, 0.687658, -22.2262, 107.744, 41.6734 )
+
+[node name="Checkpoint8" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.687658, 0, 0.726035, 0, 1, 0, -0.726035, 0, 0.687658, 20.025, 49.8238, 57.2206 )
+
+[node name="Checkpoint9" parent="World" instance=ExtResource( 2 )]
+transform = Transform( 0.687658, 0, 0.726035, 0, 1, 0, -0.726035, 0, 0.687658, -80.2439, 42.0236, 58.4897 )
+
+[node name="TreeObstacle" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 5.51174, 16.4116, 12.4109 )
+shader_material = ExtResource( 3 )
+
+[node name="TreeObstacle2" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.20464, 16.4558, -14.8756 )
+shader_material = ExtResource( 3 )
+
+[node name="TreeObstacle3" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -7.24937, 16.5569, 13.1168 )
+shader_material = ExtResource( 3 )
+
+[node name="TreeObstacle6" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -88.5566, 42.023, 57.5391 )
+shader_material = ExtResource( 21 )
+
+[node name="TreeObstacle4" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 18.6697, 27.848, -51.3937 )
+shader_material = ExtResource( 16 )
+
+[node name="TreeObstacle5" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 59.1365, 33.5047, -28.0145 )
+shader_material = ExtResource( 16 )
+
+[node name="TreeObstacle7" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -17.7932, 67.8791, -11.9948 )
+shader_material = ExtResource( 16 )
+
+[node name="TreeObstacle8" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -5.68463, 67.8791, 1.46074 )
+shader_material = ExtResource( 3 )
+
+[node name="TreeObstacle9" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -8.76709, 67.8791, 10.239 )
+shader_material = ExtResource( 21 )
+
+[node name="TreeObstacle10" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -18.3345, 67.8791, 19.4245 )
+shader_material = ExtResource( 16 )
+
+[node name="TreeObstacle11" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, -32.1538, 67.8791, -2.65588 )
+shader_material = ExtResource( 21 )
+
+[node name="TreeObstacle12" parent="World" instance=ExtResource( 11 )]
+transform = Transform( 2, 0, 0, 0, 2, 0, 0, 0, 2, 34.5103, 140.603, -2.46613 )
+shader_material = ExtResource( 21 )
+
+[node name="PlatformSq" parent="World" instance=ExtResource( 9 )]
+transform = Transform( -0.0018762, 0.249993, 0, -0.249993, -0.0018762, 0, 0, 0, 0.25, -50.3704, 20.9547, -0.770996 )
+
+[node name="PlatformSq2" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.75, 0, 0, 0, 1, 0, 0, 0, 1, -48.9237, 18.9675, -10.901 )
+
+[node name="PlatformSq3" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.75, 0, 0, 0, 1, 0, 0, 0, 1, -48.9237, 18.9675, -36.0083 )
+
+[node name="PlatformSq4" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.75, -38.0281, 22.159, -49.6068 )
+
+[node name="PlatformSq5" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 0.75, -27.5438, 22.159, -49.6068 )
+
+[node name="PlatformSq9" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 60.269, 33.1701, -17.5466 )
+
+[node name="PlatformSq10" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 60.269, 39.4253, 22.7696 )
+
+[node name="PlatformSq15" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, -44.1592, 33.4043, 56.2888 )
+
+[node name="PlatformSq11" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.25, 0, 0, 0, 0.75, 0, 0, 0, 0.25, 56.1523, 39.4253, 32.4395 )
+
+[node name="PlatformSq12" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.25, 0, 0, 0, 0.75, 0, 0, 0, 0.25, 46.5975, 39.4253, 46.7711 )
+
+[node name="PlatformSq13" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.25, 0, 0, 0, 0.75, 0, 0, 0, 0.25, 34.7009, 39.4253, 56.7031 )
+
+[node name="PlatformSq14" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 2.57115, -1.14907, 0, 3.06418, 0.964181, 0, 0, 0, 2, -26.6913, 48.4973, 56.7031 )
+
+[node name="PlatformSq6" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.383022, -0.321394, 0, 0.321394, 0.383022, 33.8655, 31.4696, -49.6068 )
+
+[node name="PlatformSq8" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.353553, -0.22726, -0.270838, 0, 0.383022, -0.321394, 0.353553, 0.22726, 0.270838, 62.0145, 31.4696, -49.6068 )
+
+[node name="PlatformSq7" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.383022, 0.321394, 0, -0.321394, 0.383022, 46.1062, 31.4696, -46.379 )
+
+[node name="PlatformSq16" parent="World" instance=ExtResource( 9 )]
+transform = Transform( 0.5, 0, 0, 0, 0.383022, 0.160697, 0, -0.321394, 0.191511, 61.4936, 32.5004, -34.0011 )
+
+[node name="LogObstacle" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52.3893, 20.3934, -15.9605 )
+duration = 2.0
+vector = Vector3( 0, 0, 11 )
+
+[node name="LogObstacle5" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.4875, 23.8006, -46.479 )
+duration = 1.1
+vector = Vector3( 0, 0, -6 )
+
+[node name="LogObstacle7" parent="World" instance=ExtResource( 13 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -28.8795, 23.8006, -49.655 )
+motion = 1
+duration = 1.5
+vector = Vector3( 0, 1, 0 )
+
+[node name="LogObstacle6" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -43.4875, 25.8395, -52.4419 )
+duration = 1.1
+vector = Vector3( 0, 0, 6 )
+
+[node name="LogObstacle4" parent="World" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -52.3893, 21.5874, -33.1857 )
+duration = 1.5
+vector = Vector3( 7, 0, 0 )
+
+[node name="LogObstacle10" parent="World" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.473, 107.639, 25.3966 )
+duration = 1.5
+vector = Vector3( 7, 0, 0 )
+
+[node name="LogObstacle11" parent="World" instance=ExtResource( 13 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -17.411, 107.639, -14.1071 )
+duration = 1.5
+vector = Vector3( -7, 0, 0 )
+
+[node name="LogObstacle2" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -45.6973, 18.8206, -21.6719 )
+motion = 1
+duration = 2.0
+vector = Vector3( 0, 0, 1 )
+
+[node name="LogObstacle8" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 61.491, 30.1161, -44.2804 )
+motion = 1
+duration = 1.5
+vector = Vector3( 0, 0, 1 )
+
+[node name="LogObstacle9" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 60.2826, 39.0859, 17.0409 )
+motion = 1
+duration = 1.5
+vector = Vector3( 0, 0, 1 )
+
+[node name="LogObstacle3" parent="World" instance=ExtResource( 13 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -52.9955, 18.8206, -21.7407 )
+motion = 1
+duration = 2.0
+vector = Vector3( 0, 0, -1 )
+
+[node name="MushroomObstacle" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -6.88823, 23.2657, -49.8461 )
+
+[node name="MushroomObstacle2" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.95595, 24.9938, -53.7179 )
+
+[node name="MushroomObstacle3" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 20.5669, 27.8417, -46.9276 )
+
+[node name="MushroomObstacle8" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -20.663, 106.245, 7.09896 )
+
+[node name="MushroomObstacle6" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 66.2701, 78.9569, 31.797 )
+
+[node name="MushroomObstacle9" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 29.97, 98.276, -37.349 )
+
+[node name="MushroomObstacle7" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 56.1146, 80.9484, 42.4571 )
+
+[node name="MushroomObstacle4" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 61.953, 25.4253, -39.7505 )
+
+[node name="MushroomObstacle5" parent="World" instance=ExtResource( 14 )]
+transform = Transform( 1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 15.6786, 49.7314, 58.0568 )
+
+[node name="TornadoObstacle" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 60.3223, 33.5143, -16.1189 )
+
+[node name="TornadoObstacle3" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 56.1704, 40.0661, 32.4834 )
+
+[node name="TornadoObstacle4" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 46.4816, 40.0661, 46.8341 )
+
+[node name="TornadoObstacle5" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 34.8679, 40.0661, 56.6858 )
+
+[node name="TornadoObstacle8" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 2.14799, 2.09431, 0, -2.09431, 2.14799, 0, 0, 0, 3, 4.83284, 70.0799, -12.4921 )
+
+[node name="TornadoObstacle10" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 1.03191, 2.81694, 0, -2.81694, 1.03191, 0, 0, 0, 3, -8.84557, 110.285, -37.3487 )
+
+[node name="TornadoObstacle11" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 0.926702, 2.85328, 0, -2.85328, 0.926702, 0, 0, 0, 3, 10.6934, 120.196, -37.3487 )
+
+[node name="TornadoObstacle12" parent="World" instance=ExtResource( 19 )]
+transform = Transform( -3, 2.62268e-07, 0, -2.62268e-07, -3, 0, 0, 0, 3, 29.97, 131.763, -37.3487 )
+
+[node name="TornadoObstacle13" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, 29.97, 105.691, -37.3487 )
+
+[node name="TornadoObstacle14" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 1.79068, -1.4449, 1.92503, 1.88389, 2.33473, 0, -1.49814, 1.20885, 2.30092, 63.8526, 128.407, -30.5528 )
+
+[node name="TornadoObstacle9" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 2.15955, -2.08239, 0, 2.08239, 2.15955, 0, 0, 0, 3, 27.3447, 95.6345, 42.6867 )
+
+[node name="TornadoObstacle7" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 3, 0, 0, 0, 3, 0, 0, 0, 3, -39.6589, 53.348, 21.6682 )
+
+[node name="TornadoObstacle6" parent="World" instance=ExtResource( 19 )]
+transform = Transform( 1.2519, -1.55973, 0, 1.55973, 1.2519, 0, 0, 0, 2, 6.55914, 58.2417, 56.6858 )
+
+[node name="BoostPad" parent="World" instance=ExtResource( 20 )]
+transform = Transform( -3.56666e-08, 0.578114, -0.815956, 2.52702e-08, 0.815956, 0.578114, 1, 0, -4.37114e-08, -51.0273, 34.2912, 55.5941 )
+
+[node name="BoostPad4" parent="World" instance=ExtResource( 20 )]
+transform = Transform( 0.780059, -0.312853, 0.541877, 0, 0.866025, 0.5, -0.625706, -0.39003, 0.675551, 54.2203, 79.1387, -11.6458 )
+
+[node name="BoostPad7" parent="World" instance=ExtResource( 20 )]
+transform = Transform( 0.845588, -0.266918, 0.462315, 0, 0.866025, 0.5, -0.533836, -0.422794, 0.732301, 59.0617, 124.377, -36.7815 )
+
+[node name="BoostPad5" parent="World" instance=ExtResource( 20 )]
+transform = Transform( 0.812623, 0.291395, -0.504711, 0, 0.866025, 0.5, 0.58279, -0.406311, 0.703752, 75.5517, 80.7944, 13.75 )
+
+[node name="BoostPad6" parent="World" instance=ExtResource( 20 )]
+transform = Transform( -4.37114e-08, 0.5, -0.866025, 0, 0.866025, 0.5, 1, 2.18557e-08, -3.78552e-08, 38.9756, 89.5687, 43.1172 )
+
+[node name="BoostPad2" parent="World" instance=ExtResource( 20 )]
+transform = Transform( -0.612217, -0.457109, 0.645168, 2.52702e-08, 0.815956, 0.578114, -0.790689, 0.353931, -0.499542, -72.7628, 43.4321, 47.4257 )
+
+[node name="BoostPad3" parent="World" instance=ExtResource( 20 )]
+transform = Transform( -0.612217, -0.457109, 0.645168, 2.52702e-08, 0.815956, 0.578114, -0.790689, 0.353931, -0.499542, -47.5812, 48.6319, 28.3564 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[connection signal="display_present_count" from="Player" to="HUD/PresentCounter" method="_on_display_present_count"]
+[connection signal="display_text" from="Player" to="HUD/Textbox" method="_on_display_text"]
+[connection signal="finish_dialog" from="HUD/Textbox" to="Player" method="_on_finish_dialog"]

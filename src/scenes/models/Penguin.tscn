@@ -1,0 +1,103 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://assets/models/penguin.glb" type="PackedScene" id=1]
+[ext_resource path="res://src/shaders/psx.shader" type="Shader" id=2]
+[ext_resource path="res://assets/textures/penguin.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/snapRes = 24.0
+shader_param/roughness = 1.0
+shader_param/specular = 0.1
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/light_intensity = 0.3
+shader_param/transparent = false
+shader_param/albedoTex = ExtResource( 3 )
+
+[sub_resource type="AnimationNodeBlend2" id=22]
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "Jump-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "Land-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "NoRotate"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Rest-loop"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "Walk-loop"
+
+[sub_resource type="AnimationNodeBlend2" id=16]
+
+[sub_resource type="AnimationNodeBlend2" id=18]
+
+[sub_resource type="AnimationNodeBlend2" id=15]
+
+[sub_resource type="AnimationNodeBlend2" id=13]
+
+[sub_resource type="AnimationNodeOneShot" id=20]
+filters = [ "Armature/Skeleton:Body" ]
+
+[sub_resource type="AnimationNodeAnimation" id=3]
+animation = "Squish"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Stretch"
+
+[sub_resource type="AnimationNodeTimeScale" id=12]
+
+[sub_resource type="AnimationNodeBlendTree" id=2]
+graph_offset = Vector2( -34, 19 )
+nodes/Blend2/node = SubResource( 22 )
+nodes/Blend2/position = Vector2( 240, 40 )
+nodes/animation_jump/node = SubResource( 9 )
+nodes/animation_jump/position = Vector2( -500, 280 )
+nodes/animation_land/node = SubResource( 8 )
+nodes/animation_land/position = Vector2( -500, 400 )
+nodes/animation_no_rotate/node = SubResource( 21 )
+nodes/animation_no_rotate/position = Vector2( -260, 400 )
+nodes/animation_rest/node = SubResource( 14 )
+nodes/animation_rest/position = Vector2( -500, 160 )
+nodes/animation_walk/node = SubResource( 10 )
+nodes/animation_walk/position = Vector2( -740, 40 )
+nodes/blend_air/node = SubResource( 16 )
+nodes/blend_air/position = Vector2( -260, 220 )
+nodes/blend_bounce/node = SubResource( 18 )
+nodes/blend_bounce/position = Vector2( -260, 520 )
+nodes/blend_floor/node = SubResource( 15 )
+nodes/blend_floor/position = Vector2( 20, 40 )
+nodes/blend_walk/node = SubResource( 13 )
+nodes/blend_walk/position = Vector2( -260, 40 )
+nodes/oneshot_bounce/node = SubResource( 20 )
+nodes/oneshot_bounce/position = Vector2( 20, 240 )
+nodes/output/position = Vector2( 460, 40 )
+nodes/squish/node = SubResource( 3 )
+nodes/squish/position = Vector2( -460, 520 )
+nodes/stretch/node = SubResource( 19 )
+nodes/stretch/position = Vector2( -460, 640 )
+nodes/time_scale_walk/node = SubResource( 12 )
+nodes/time_scale_walk/position = Vector2( -500, 40 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "blend_floor", "Blend2", 1, "oneshot_bounce", "blend_air", 0, "animation_jump", "blend_air", 1, "animation_land", "blend_bounce", 0, "squish", "blend_bounce", 1, "stretch", "blend_floor", 0, "blend_walk", "blend_floor", 1, "blend_air", "blend_walk", 0, "time_scale_walk", "blend_walk", 1, "animation_rest", "oneshot_bounce", 0, "animation_no_rotate", "oneshot_bounce", 1, "blend_bounce", "time_scale_walk", 0, "animation_walk" ]
+
+[node name="Penguin" instance=ExtResource( 1 )]
+
+[node name="Model" parent="Armature/Skeleton" index="0"]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0 )
+material/0 = SubResource( 1 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource( 2 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/Blend2/blend_amount = 0.01
+parameters/blend_air/blend_amount = 1.0
+parameters/blend_bounce/blend_amount = 0.0
+parameters/blend_floor/blend_amount = 0.0
+parameters/blend_walk/blend_amount = 0.0
+parameters/oneshot_bounce/active = false
+parameters/time_scale_walk/scale = 1.0

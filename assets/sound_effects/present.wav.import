@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/present.wav-a3e5c2f806c41980f1f30bf4c2323cae.sample"
+
+[deps]
+
+source_file="res://assets/sound_effects/present.wav"
+dest_files=[ "res://.import/present.wav-a3e5c2f806c41980f1f30bf4c2323cae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

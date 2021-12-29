@@ -1,0 +1,155 @@
+[gd_scene load_steps=20 format=2]
+
+[ext_resource path="res://src/scripts/main_menu.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Spyro2-nZvM.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/textures/copyright.png" type="Texture" id=3]
+[ext_resource path="res://src/themes/MainMenu.tres" type="Theme" id=4]
+[ext_resource path="res://src/scripts/main_menu_overlay.gd" type="Script" id=5]
+[ext_resource path="res://src/scenes/actors/MushroomObstacle.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scenes/models/Platform.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/scenes/actors/TreeObstacle.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/materials/tree_lights.tres" type="Material" id=9]
+[ext_resource path="res://src/scenes/models/Penguin.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/scenes/models/Duck.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/scripts/main_menu_camera.gd" type="Script" id=12]
+[ext_resource path="res://assets/fonts/PolygonParty-3KXM.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/music/track1.mp3" type="AudioStream" id=14]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 13 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 4 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 1
+background_color = Color( 0.588235, 0.588235, 0.588235, 1 )
+
+[node name="MainMenu" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Overlay" type="Control" parent="."]
+margin_right = 384.0
+margin_bottom = 288.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Copyright" type="Label" parent="Overlay"]
+margin_left = 18.0
+margin_top = 214.0
+margin_right = 333.0
+margin_bottom = 289.0
+theme = SubResource( 2 )
+custom_colors/font_color = Color( 0.933333, 1, 0, 1 )
+text = " 2021 Wojciech Graj
+Ver 1.0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CopyrightSymbol" type="Sprite" parent="Overlay/Copyright"]
+position = Vector2( 7, 23 )
+texture = ExtResource( 3 )
+
+[node name="Options" type="Label" parent="Overlay"]
+margin_left = 36.0
+margin_top = 138.0
+margin_right = 365.0
+margin_bottom = 176.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.933333, 1, 0, 1 )
+text = "Resolution"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Resolution" type="Label" parent="Overlay/Options"]
+margin_left = 150.0
+margin_right = 363.0
+margin_bottom = 36.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.933333, 1, 0, 1 )
+text = "<XXXXxXXXX>"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Start" type="Label" parent="Overlay"]
+margin_top = 109.0
+margin_right = 384.0
+margin_bottom = 145.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 0.933333, 1, 0, 1 )
+text = "Press START"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Overlay"]
+margin_top = 10.0
+margin_right = 384.0
+margin_bottom = 91.0
+theme = SubResource( 5 )
+custom_colors/font_color = Color( 0.933333, 1, 0, 1 )
+text = "Penguin's Platforming
+Christmas Adventure"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 3 )
+
+[node name="Pivot" type="Spatial" parent="."]
+script = ExtResource( 12 )
+
+[node name="Camera" type="Camera" parent="Pivot"]
+transform = Transform( 1, 0, 0, 0, 0.918612, 0.395161, 0, -0.395161, 0.918612, 0, 4.25082, 10.7258 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 14 )
+autoplay = true
+
+[node name="StaticScene" type="Spatial" parent="."]
+
+[node name="MushroomObstacle" parent="StaticScene" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 1.5 )
+
+[node name="TreeObstacle" parent="StaticScene" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 3.32055, 0, 0.0252757 )
+shader_material = ExtResource( 9 )
+
+[node name="TreeObstacle2" parent="StaticScene" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.98793, 0, -2.30971 )
+shader_material = ExtResource( 9 )
+
+[node name="Penguin" parent="StaticScene" instance=ExtResource( 10 )]
+transform = Transform( 0.810829, 0, 0.585283, 0, 1, 0, -0.585283, 0, 0.810829, -3.08958, 0, 0.782153 )
+
+[node name="Duck" parent="StaticScene" instance=ExtResource( 11 )]
+transform = Transform( 0.299276, 0, 0.181477, 0, 0.35, 0, -0.181477, 0, 0.299276, 1.79238, 0, 2.62132 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="StaticScene"]
+transform = Transform( 1, 0, 0, 0, 0.0234028, 0.999726, 0, -0.999726, 0.0234028, 0, 22.1194, 0 )
+light_bake_mode = 2
+directional_shadow_mode = 0
+
+[node name="Platform" parent="StaticScene" instance=ExtResource( 7 )]
+transform = Transform( 5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0 )

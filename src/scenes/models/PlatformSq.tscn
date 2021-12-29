@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/shaders/psx.shader" type="Shader" id=1]
+[ext_resource path="res://assets/textures/platform.png" type="Texture" id=2]
+[ext_resource path="res://assets/models/platform_square.glb" type="PackedScene" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 1 )
+shader_param/snapRes = 32.0
+shader_param/roughness = 1.0
+shader_param/specular = 0.1
+shader_param/uv_scale = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/light_intensity = 0.3
+shader_param/transparent = false
+shader_param/albedoTex = ExtResource( 2 )
+
+[sub_resource type="ConcavePolygonShape" id=2]
+data = PoolVector3Array( 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, -1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1 )
+
+[node name="PlatformSq" instance=ExtResource( 3 )]
+
+[node name="Cube" parent="." index="0"]
+material/0 = SubResource( 1 )
+
+[node name="StaticBody" type="StaticBody" parent="Cube" index="0"]
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape" parent="Cube/StaticBody" index="0"]
+shape = SubResource( 2 )

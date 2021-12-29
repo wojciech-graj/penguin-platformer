@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/materials/shadow.tres" type="Material" id=1]
+[ext_resource path="res://src/scripts/shadow_dynamic.gd" type="Script" id=2]
+
+[sub_resource type="QuadMesh" id=12]
+
+[node name="ShadowDynamic" type="RayCast"]
+enabled = true
+exclude_parent = false
+cast_to = Vector3( 0, -20, 0 )
+collision_mask = 3
+script = ExtResource( 2 )
+
+[node name="ShadowMesh" type="MeshInstance" parent="."]
+mesh = SubResource( 12 )
+skeleton = NodePath("../..")
+material/0 = ExtResource( 1 )
